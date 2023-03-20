@@ -33,16 +33,16 @@ window.addEventListener("load", () => {
   DisplayTodos();
 });
 
-function renderTodos(todos , selector) {
+function renderTodos(todosCheck , selector) {
   const todoList = document.querySelector(selector);
 
   todoList.innerHTML = "";
 
-  todos.sort(function (a, b) {
+  todosCheck.sort(function (a, b) {
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
-  todos.forEach((todo) => {
+  todosCheck.forEach((todo) => {
     const todoItem = document.createElement("div");
     todoItem.classList.add("todo-item");
 
