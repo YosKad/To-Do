@@ -31,15 +31,18 @@ window.addEventListener("load", () => {
   });
 
   DisplayTodos();
-  
 });
 
-function DisplayTodos() {
-  const todoList = document.querySelector('#todo-list');
+function renderTodos(todos , selector) {
+  const todoList = document.querySelector(selector);
 
-  todoList.innerHTML = '';
+  todoList.innerHTML = "";
 
-  todos.forEach(todo => {
+  todos.sort(function (a, b) {
+    return new Date(b.createdAt) - new Date(a.createdAt);
+  });
+
+  todos.forEach((todo) => {
     const todoItem = document.createElement("div");
     todoItem.classList.add("todo-item");
 
@@ -57,6 +60,8 @@ function DisplayTodos() {
 
     if (todo.category == "personal") {
       span.classList.add("personal");
+    } else if (todo.category == "study") {
+      span.classList.add("study");
     } else {
       span.classList.add("business");
     }
@@ -98,24 +103,34 @@ function DisplayTodos() {
       DisplayTodos();
     });
 
-    edit.addEventListener('click', e => {
-      const input = content.querySelector('input');
-      input.removeAttribute('readonly');
+    edit.addEventListener("click", (e) => {
+      const input = content.querySelector("input");
+      input.removeAttribute("readonly");
       input.focus();
-      input.addEventListener("blur", e => {
+      input.addEventListener("blur", (e) => {
         input.setAttribute("redonly", true);
         todo.content = e.target.value;
         localStorage.setItem("todos", JSON.stringify(todos));
         DisplayTodos();
       });
+    });
 
-      });
-
-      deleteButton.addEventListener('click' , e => {
-        todos = todos.filter(t => t != todo);
-        localStorage.setItem('todos' , JSON.stringify(todos));
-        DisplayTodos();
-
+    deleteButton.addEventListener("click", (e) => {
+      todos = todos.filter((t) => t != todo);
+      localStorage.setItem("todos", JSON.stringify(todos));
+      DisplayTodos();
     });
   });
+}
+
+function DisplayTodos() {
+  openTodos = todos.filter(function (a) {
+    return a.done == false;
+  });
+  finishTodos = todos.filter(function (a) {
+    return a.done == true;
+  });
+
+  renderTodos(openTodos , "#todo-list");
+  renderTodos(finishTodos , "#finish-todo-list");
 }
