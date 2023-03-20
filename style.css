@@ -1,7 +1,7 @@
 :root {
-  --primary: #ea40a4;
-  --business: #3a82ee;
-  --study: #f6ec7c;
+  --primary: #BC0E4C;
+  --business: #1067a1;
+  --study: #ffc501;
   --personal: var(--primary);
   --light: #eee;
   --dark: #313154;
@@ -11,9 +11,9 @@
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
 
-  --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
-  --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
-  --study-glow: 0px 0px 4px rgba(246, 236, 124 , 0.75);
+  --business-glow: 0px 0px 4px rgba(16, 103, 161 , 0.75);
+  --personal-glow: 0px 0px 4px rgba(188, 14, 76 , 0.75);
+  --study-glow: 0px 0px 4px rgba(255, 197, 1 , 0.75);
   --secondary-glow: 0px 0px 4px rgba(5, 150, 105 , 0.75);
 }
 
@@ -22,6 +22,18 @@
   padding: 0;
   margin: 0;
   font-family: "Poppins", sans-serif;
+}
+
+.header {
+    width: 100%;
+    height: 15%;
+    background-color: var(--secondary);
+    z-index: -1;
+}
+
+.header h1 {
+    color: #fff;
+    text-align: center;
 }
 
 input:not([type="radio"]):not([type="checkbox"]),
