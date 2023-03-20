@@ -27,6 +27,27 @@ window.addEventListener('load' , () => {
         localStorage.setItem('todos' , JSON.stringify(todos));
 
         e.target.reset();
+
+        DisplayTodos();
     })
-});
+})
+
+function DisplayTodos() {
+    const todoList = document.querySelector('#todo-list');
+
+    todoList.innerHTML = '';
+
+    todos1.forEach(todo => {
+        const todoItem = document.createElement('div');
+        todoItem.classList.add('todo-item')
+
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        const span = document.createElement('span');
+        const content = document.createElement('div');
+        const actions = document.createElement('div');
+        const edit = document.createElement('button');
+        const deleteButton = document.createElement('button');
+    })
+}
 
